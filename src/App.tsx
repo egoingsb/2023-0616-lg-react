@@ -5,11 +5,8 @@ type CounterProps = {
   title: string;
   initValue: number;
 };
-function Counter(props: CounterProps) {
-  // const countState = useState(props.initValue);
-  // const count = countState[0];
-  // const setCount = countState[1];
-  const [count, setCount] = useState(props.initValue);
+function Counter({ title, initValue }: CounterProps) {
+  const [count, setCount] = useState(initValue);
   function up() {
     console.log("up");
     // count = count + 1;
@@ -17,7 +14,7 @@ function Counter(props: CounterProps) {
   }
   return (
     <div>
-      <h1>{props.title}</h1>
+      <h1>{title}</h1>
       <button onClick={up}>+</button>
       <button>-</button> {count}
     </div>
