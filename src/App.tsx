@@ -7,10 +7,10 @@ type CounterProps = {
 };
 function Counter({ title, initValue }: CounterProps) {
   const [count, setCount] = useState(initValue);
+  console.log("Counter start", count);
   function up() {
-    console.log("up");
-    // count = count + 1;
-    setCount(count + 1);
+    // setCount(count + 1);
+    setCount((oldCount) => oldCount + 1);
   }
   return (
     <div>
