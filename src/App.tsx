@@ -12,9 +12,13 @@ function Counter({ title, initValue }: CounterProps) {
     // setCount(count + 1);
     setCount((oldCount) => oldCount + 1);
   }
+  const css = {
+    fontSize: 50,
+    color: "red",
+  };
   return (
     <div>
-      <h1>{title}</h1>
+      <h1 style={css}>{title}</h1>
       <button onClick={up}>+</button>
       <button>-</button> {count}
     </div>
@@ -24,7 +28,6 @@ function App() {
   return (
     <div>
       <Counter title="손님 카운터" initValue={10}></Counter>
-      <Counter title="불면증 카운터" initValue={20}></Counter>
     </div>
   );
 }
