@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import style from "./App.module.css";
@@ -11,9 +11,27 @@ type CounterProps = {
 };
 function Counter({ title, initValue }: CounterProps) {
   const [count, setCount] = useState(initValue);
+  // 1. count 값을 서버에서 1번 가져온다.
+  useEffect(() => {
+    fetch("http://localhost:9999/counter")
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((result) => {
+        setCount(result.value);
+      });
+  }, []);
   function up() {
-    // setCount(count + 1);
-    setCount((oldCount) => oldCount + 1);
+    const option = {
+      method: "PATCH",
+      body: JSON.stringify({ value: count + 1 }),
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch("http://localhost:9999/counter", option)
+      .then((resp) => resp.json())
+      .then((result) => {
+        setCount(result.value);
+      });
   }
   const css = {
     fontSize: 50,
@@ -33,12 +51,6 @@ function App() {
   return (
     <Container maxWidth="md">
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Counter title="손님 카운터" initValue={10}></Counter>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Counter title="손님 카운터" initValue={10}></Counter>
-        </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Counter title="손님 카운터" initValue={10}></Counter>
         </Grid>
