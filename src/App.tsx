@@ -21,17 +21,15 @@ function Counter({ title, initValue }: CounterProps) {
         setCount(result.value);
       });
   }, []);
-  function up() {
+  async function up() {
     const option = {
       method: "PATCH",
       body: JSON.stringify({ value: count + 1 }),
       headers: { "Content-Type": "application/json" },
     };
-    fetch("http://localhost:9999/counter", option)
-      .then((resp) => resp.json())
-      .then((result) => {
-        setCount(result.value);
-      });
+    const resp = await fetch("http://localhost:9999/counter", option);
+    const result = await resp.json();
+    setCount(result.value);
   }
   const css = {
     fontSize: 50,
