@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import style from "./App.module.css";
 import Container from "@mui/material/Container";
+import { Grid } from "@mui/material";
 
 type CounterProps = {
   title: string;
@@ -30,8 +31,18 @@ function Counter({ title, initValue }: CounterProps) {
 }
 function App() {
   return (
-    <Container>
-      <Counter title="손님 카운터" initValue={10}></Counter>
+    <Container maxWidth="md">
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Counter title="손님 카운터" initValue={10}></Counter>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Counter title="손님 카운터" initValue={10}></Counter>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Counter title="손님 카운터" initValue={10}></Counter>
+        </Grid>
+      </Grid>
     </Container>
   );
 }
