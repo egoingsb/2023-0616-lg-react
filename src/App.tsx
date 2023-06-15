@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import style from "./App.module.css";
+import Container from "@mui/material/Container";
 
 type CounterProps = {
   title: string;
@@ -29,9 +30,9 @@ function Counter({ title, initValue }: CounterProps) {
 }
 function App() {
   return (
-    <div>
+    <Container>
       <Counter title="손님 카운터" initValue={10}></Counter>
-    </div>
+    </Container>
   );
 }
 
