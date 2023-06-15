@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import style from "./App.module.css";
 import Container from "@mui/material/Container";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 type CounterProps = {
   title: string;
@@ -22,9 +22,9 @@ function Counter({ title, initValue }: CounterProps) {
   return (
     <div className="layout">
       <h1 style={css}>{title}</h1>
-      <button className={style.btn} onClick={up}>
+      <Button variant="contained" className={style.btn} onClick={up}>
         +
-      </button>{" "}
+      </Button>{" "}
       {count}
     </div>
   );
