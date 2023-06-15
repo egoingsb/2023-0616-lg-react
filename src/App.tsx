@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 type CounterProps = {
@@ -6,12 +6,20 @@ type CounterProps = {
   initValue: number;
 };
 function Counter(props: CounterProps) {
-  console.log("props", props);
+  // const countState = useState(props.initValue);
+  // const count = countState[0];
+  // const setCount = countState[1];
+  const [count, setCount] = useState(props.initValue);
+  function up() {
+    console.log("up");
+    // count = count + 1;
+    setCount(count + 1);
+  }
   return (
     <div>
       <h1>{props.title}</h1>
-      <button>+</button>
-      <button>-</button> {props.initValue}
+      <button onClick={up}>+</button>
+      <button>-</button> {count}
     </div>
   );
 }
