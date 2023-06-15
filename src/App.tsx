@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import style from "./App.module.css";
+
 type CounterProps = {
   title: string;
   initValue: number;
@@ -18,8 +20,10 @@ function Counter({ title, initValue }: CounterProps) {
   return (
     <div className="layout">
       <h1 style={css}>{title}</h1>
-      <button onClick={up}>+</button>
-      <button>-</button> {count}
+      <button className={style.btn} onClick={up}>
+        +
+      </button>{" "}
+      {count}
     </div>
   );
 }
